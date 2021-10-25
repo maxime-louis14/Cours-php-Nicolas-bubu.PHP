@@ -5,34 +5,27 @@ $memoire = 0;
 
 echo "Avant:";
 for($M = 0; $M < count($Tableau); $M++) {
- echo  $Tableau[$M].", ";
- $comparesion++;
- $memoire++;	
-}
- 
-for($I = count($Tableau) - 2;$I >= 0; $I--) {
-	$comparesion++;
-	$memoire++;	
- for($J = 0; $J <= $I; $J++) {
-  if($Tableau[$J + 1] < $Tableau[$J]) {  
-   $t = $Tableau[$J + 1];
-   $Tableau[$J + 1] = $Tableau[$J];
-   $Tableau[$J] = $t;
-   $comparesion++;
-   $memoire++;	
+  echo  $Tableau[$M].", ";
+   
+  for($J = $I+1; $J<count($Tableau); $J++) {
+    $memoire += 4;
+    $comparesion += 2;
+
+    if($Tableau[$J] < $Tableau[$I]) {  
+
+      $t = $Tableau[$J];
+      $Tableau[$J] = $Tableau[$I];
+      $memoire += 4;
+      $Tableau[$J] = $t; 
+    }
   }
- }
 }
  
 echo "<br />Après:";
-for($L = 0; $L < count($Tableau); $L++) {
-  echo $Tableau[$L].", ";
-  $comparesion++;
-  $memoire++;	
-}
 
 echo "comparesion : $comparesion";
 echo "<br />";
 echo "memoire : $memoire";
 
-?>
+var_dump($Tableau);
+?> 
